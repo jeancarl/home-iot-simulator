@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title>IoT Sensor</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<!-- Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!--link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"-->
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body onload="init()">
+		<div class="col-md-6">
+			<div class="header">
+				<a class="navbar-brand" style="background-color: #000; padding-left: 25px; padding-right: 25px; color: white; width: 100%">IoT Sensor <div class="pull-right"><span id="deviceStatus">Not Connected</span> <button type="button" id="connectSimulator" class="btn btn-sm btn-primary">Connect</button></div></a>
+			</div>
+
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+			<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="navy item active">
+						<div class="container">
+							<div class="carousel-top">
+								<h4>Temperature</h4>
+							</div>
+							<div class="carousel-main">
+								<div class="readingBox">
+									<h1 class="readingValue" id="tempReading"></h1>
+								</div>
+							</div>
+							<div class="carousel-caption">
+								<div class="readingButtons"><button id="tempDown" class="readingButton btn btn-lg btn-default" style="margin-right: 20px;" href="#" role="button"><span class='glyphicon glyphicon-arrow-down'></span></button><button id="tempUp" class="readingButton btn btn-lg btn-default" href="#" role="button"><span class='glyphicon glyphicon-arrow-up'></span></button></div>
+								<small><i>swipe left/right for more</i></small>
+							</div>
+						</div>
+					</div>
+					<div class="green item">
+						<div class="container">
+							<div class="carousel-top">
+								<h4>Humidity</h4>
+							</div>
+							<div class="carousel-main">
+								<div class="readingBox">
+									<h1 class="readingValue" id="humidityReading"></h1>
+								</div>
+							</div>
+							<div class="carousel-caption">
+								<div class="readingButtons"><button id="humidityDown" class="readingButton btn btn-lg btn-default" style="margin-right: 20px;" href="#" role="button"><span class='glyphicon glyphicon-arrow-down'></span></button><button id="humidityUp" class="readingButton btn btn-lg btn-default" href="#" role="button"><span class='glyphicon glyphicon-arrow-up'></span></button></div>
+								<small><i>swipe left/right for more</i></small>
+							</div>
+						</div>
+					</div>
+					<div class="orange item">
+						<div class="container">
+							<div class="carousel-top">
+								<h4>Object Temperature</h4>
+							</div>
+							<div class="carousel-main">
+								<div class="readingBox">
+									<h1 class="readingValue" id="objectTempReading"></h1>
+								</div>
+							</div>
+							<div class="carousel-caption">
+								<div class="readingButtons"><button id="objectTempDown" class="readingButton btn btn-lg btn-default" style="margin-right: 20px;" href="#" role="button"><span class='glyphicon glyphicon-arrow-down'></span></button><button id="objectTempUp" class="readingButton btn btn-lg btn-default" href="#" role="button"><span class='glyphicon glyphicon-arrow-up'></span></button></div>
+								<small><i>swipe left/right for more</i></small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="http://getbootstrap.com/examples/carousel/#myCarousel" data-slide="prev"><span class="faded glyphicon glyphicon-chevron-left"></span></a>
+				<a class="right carousel-control" href="http://getbootstrap.com/examples/carousel/#myCarousel" data-slide="next"><span class="faded glyphicon glyphicon-chevron-right"></span></a>
+			</div><!-- /.carousel -->
+		</div>
+    <div class="col-md-6 things">
+      <h3>FIREPLACE</h3>
+      <p><span id="fireplace" class="glyphicon glyphicon-fire"></span></p>
+
+      <h3>A/C</h3>
+      <p><span id="airConditioner" class="glyphicon glyphicon glyphicon-asterisk"></span></p>
+
+      <h3>LCD</h3>
+      <pre id="lcd"></pre>
+
+      <h3>WEATHER</h3>
+      <p id="weather">Unknown</p>
+      <span id="weatherIcon" class="glyphicon glyphicon-remove"></pre>
+    </div>
+	</body>
+
+  <script src="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://quickstart.internetofthings.ibmcloud.com/iotsensor/js/jquery.mobile.custom.min.js"></script>
+	<script src="https://quickstart.internetofthings.ibmcloud.com/iotsensor/js/bootstrap.min.js"></script>
+	<script src="https://quickstart.internetofthings.ibmcloud.com/iotsensor/js/mqttws31.js"></script>
+	<script src="https://quickstart.internetofthings.ibmcloud.com/iotsensor/js/fastclick.js"></script>
+	<script src="js/main.js"></script>
+
+	<script type="application/javascript">
+		window.addEventListener('load', function () {
+			FastClick.attach(document.body);
+		}, false);
+	</script>
+</html>
